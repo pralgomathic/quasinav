@@ -241,62 +241,44 @@
 </section>
  -->
 
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-       <p>
-            The increasing deployment of autonomous systems in complex environments 
-            necessitates efficient communication and task completion among multiple agents. 
+          <p>
+              Autonomous navigation in unstructured outdoor environments is inherently challenging due to the presence of asymmetric traversal costs, such as varying energy expenditures for uphill versus downhill movement.
           </p>
           <p>
-            This paper presents <strong>SERN</strong> (Simulation-Enhanced Realistic Navigation), 
-            a novel framework integrating virtual and physical environments for real-time 
-            collaborative decision-making in multi-robot systems. SERN addresses key challenges 
-            in asset deployment and coordination through our bi-directional 
-            <strong>SERN ROS Bridge</strong> communication framework.
+              Traditional reinforcement learning methods often assume symmetric costs, which can lead to suboptimal navigation paths and increased safety risks in real-world scenarios.
           </p>
           <p>
-            Our approach advances the state-of-the-art (SOTA) through:
-            <ul>
-              <li>Accurate real-world representation in virtual environments using Unity’s high-fidelity simulator.</li>
-              <li>Synchronization of physical and virtual robot movements.</li>
-              <li>Efficient ROS data distribution between remote locations.</li>
-              <li>Integration of SOTA semantic segmentation for enhanced environmental perception.</li>
-            </ul>
+              In this paper, we introduce <strong>QuasiNav</strong>, a novel reinforcement learning framework that integrates quasimetric embeddings to explicitly model asymmetric costs and guide efficient, safe navigation. <strong>QuasiNav</strong> formulates the navigation problem as a constrained Markov decision process (CMDP) and employs quasimetric embeddings to capture directionally dependent costs, allowing for a more accurate representation of the terrain.
           </p>
           <p>
-            Additionally, we introduce a <strong>Multi-Metric Cost Function (MMCF)</strong> that dynamically balances 
-            latency, reliability, computational overhead, and bandwidth consumption to optimize 
-            system performance in contested environments.
+              This approach is combined with adaptive constraint tightening within a constrained policy optimization framework to dynamically enforce safety constraints during learning.
           </p>
           <p>
-            We further provide theoretical justification for synchronization accuracy by proving 
-            that the positional error between physical and virtual robots remains bounded under 
-            varying network conditions.
+              We validate <strong>QuasiNav</strong> across three challenging navigation scenarios:
+              <ul>
+                  <li>Undulating terrains,</li>
+                  <li>Asymmetric hill traversal,</li>
+                  <li>Directionally dependent terrain traversal.</li>
+              </ul>
           </p>
           <p>
-            Our evaluations show a <strong>15% to 24% improvement</strong> in latency and up to a 
-            <strong>15% increase</strong> in processing efficiency compared to traditional ROS setups. 
-            Real-world and virtual simulation experiments with multiple robots 
-            (<em>Clearpath Jackal and Husky</em>) demonstrate synchronization accuracy, achieving 
-            less than <strong>5 cm</strong> positional error and under <strong>2°</strong> rotational error.
+              Experimental results show that <strong>QuasiNav</strong> significantly outperforms conventional methods, achieving higher success rates, improved energy efficiency, and better adherence to safety constraints.
           </p>
-          <p>
-            These results highlight SERN's potential to enhance situational awareness and 
-            multi-agent coordination in diverse, contested environments.
-          </p>
-        
+
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
 
    <!-- Paper video. -->
-<div class="columns is-centered has-text-centered">
+<!-- <div class="columns is-centered has-text-centered">
   <div class="column is-four-fifths">
     <h2 class="title is-3">Video</h2>
     <div class="publication-video">
@@ -308,10 +290,10 @@
       </iframe>
     </div>
   </div>
-</div>
+</div> -->
 <!--/ Paper video. -->
 
-</section>
+<!-- </section>
 
   <section class="section" id="sern-implementation">
   <div class="container is-max-desktop">
@@ -329,9 +311,9 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
-<section class="section" id="results">
+<!-- <section class="section" id="results">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Results</h2>
     <div class="content">
@@ -343,20 +325,21 @@
       </figure>
     </div>
   </div>
-</section>
-
+</section> -->
+ -->
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@misc{hossain2025sern,
-  author       = {Hossain, Jumman and Dey, Emon and Chugh, Snehalraj and Ahmed, Masud and Anwar, M. S. and Faridee, Abu-Zaher and Hoppes, Jason and Trout, Theron and Basak, Anjon and Chowdhury, Rafidh and Mistry, Rishabh and Kim, Hyun and Freeman, Jade and Suri, Niranjan and Raglin, Adrienne and Busart, Carl and Gregory, Timothy and Ravi, Anuradha and Roy, Nirmalya},
-  title        = {SERN: Simulation-Enhanced Realistic Navigation for Multi-Agent Robotic Systems in Contested Environments},
+    <pre><code>@inproceedings{hossain2025quasinav,
+  author       = {Hossain, Jumman and Faridee, Abu-Zaher and Asher, Derrik and Freeman, Jade and Trout, Theron and Gregory, Timothy and Roy, Nirmalya},
+  title        = {QuasiNav: Learning Optimal Policies with Quasi-Potential Functions for Asymmetric Traversal},
+  booktitle    = {Proceedings of the IEEE International Conference on Robotics and Automation (ICRA)},
   year         = {2025},
-  eprint       = {2410.16686},
-  archivePrefix= {arXiv},
-  primaryClass = {cs.RO},
-  url          = {https://arxiv.org/abs/2410.16686}
+  pages        = {TBD},
+  publisher    = {IEEE}
+}
+
 }</code></pre>
   </div>
 </section>
