@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SERN: Simulation-Enhanced Realistic Navigation for Multi-Agent Robotic Systems in Contested Environments">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SERN: Simulation-Enhanced Realistic Navigation for Multi-Agent Robotic Systems in Contested Environments</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/sern.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+ -->
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+        <h1 class="title is-1 publication-title">SERN: Simulation-Enhanced Realistic Navigation for Multi-Agent Robotic Systems in Contested Environments</h1>
+
+        <div class="is-size-5 publication-authors">
+          <span class="author-block">Jumman Hossain<sup>1</sup>,</span>
+          <span class="author-block">Emon Dey<sup>1</sup>,</span>
+          <span class="author-block">Snehalraj Chugh<sup>1</sup>,</span>
+          <span class="author-block">Masud Ahmed<sup>1</sup>,</span>
+          <span class="author-block">MS Anwar<sup>1</sup>,</span>
+          <span class="author-block">Abu-Zaher Faridee<sup>1,2</sup>,</span>
+          <span class="author-block">Jason Hoppes<sup>3</sup>,</span>
+          <span class="author-block">Theron Trout<sup>3</sup>,</span>
+          <span class="author-block">Anjon Basak<sup>3</sup>,</span>
+          <span class="author-block">Rafidh Chowdhury<sup>3</sup>,</span>
+          <span class="author-block">Rishabh Mistry<sup>3</sup>,</span>
+          <span class="author-block">Hyun Kim<sup>3</sup>,</span>
+          <span class="author-block">Jade Freeman<sup>4</sup>,</span>
+          <span class="author-block">Niranjan Suri<sup>4</sup>,</span>
+          <span class="author-block">Adrienne Raglin<sup>4</sup>,</span>
+          <span class="author-block">Carl Busart<sup>4</sup>,</span>
+          <span class="author-block">Timothy Gregory<sup>4</sup>,</span>
+          <span class="author-block">Anuradha Ravi<sup>1</sup>,</span>
+          <span class="author-block">Nirmalya Roy<sup>1</sup></span>
+        </div>
+        
+        <div class="is-size-5 publication-authors">
+          <span class="author-block"><sup>1</sup>Department of Information Systems, University of Maryland, Baltimore County, USA</span>
+          <span class="author-block"><sup>2</sup>Amazon Inc., USA</span>
+          <span class="author-block"><sup>3</sup>Stormfish Scientific Corporation, USA</span>
+          <span class="author-block"><sup>4</sup>DEVCOM Army Research Lab, USA</span>
+        </div>
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2410.16686"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2410.16686"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/BqNoqDPqhNc"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code(Coming Soon..)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data(Coming Soon..)</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/Jackal Video.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">SERN's</span> Realistic Navigation with AuroraXR.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!--
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+       <p>
+            The increasing deployment of autonomous systems in complex environments 
+            necessitates efficient communication and task completion among multiple agents. 
+          </p>
+          <p>
+            This paper presents <strong>SERN</strong> (Simulation-Enhanced Realistic Navigation), 
+            a novel framework integrating virtual and physical environments for real-time 
+            collaborative decision-making in multi-robot systems. SERN addresses key challenges 
+            in asset deployment and coordination through our bi-directional 
+            <strong>SERN ROS Bridge</strong> communication framework.
+          </p>
+          <p>
+            Our approach advances the state-of-the-art (SOTA) through:
+            <ul>
+              <li>Accurate real-world representation in virtual environments using Unity’s high-fidelity simulator.</li>
+              <li>Synchronization of physical and virtual robot movements.</li>
+              <li>Efficient ROS data distribution between remote locations.</li>
+              <li>Integration of SOTA semantic segmentation for enhanced environmental perception.</li>
+            </ul>
+          </p>
+          <p>
+            Additionally, we introduce a <strong>Multi-Metric Cost Function (MMCF)</strong> that dynamically balances 
+            latency, reliability, computational overhead, and bandwidth consumption to optimize 
+            system performance in contested environments.
+          </p>
+          <p>
+            We further provide theoretical justification for synchronization accuracy by proving 
+            that the positional error between physical and virtual robots remains bounded under 
+            varying network conditions.
+          </p>
+          <p>
+            Our evaluations show a <strong>15% to 24% improvement</strong> in latency and up to a 
+            <strong>15% increase</strong> in processing efficiency compared to traditional ROS setups. 
+            Real-world and virtual simulation experiments with multiple robots 
+            (<em>Clearpath Jackal and Husky</em>) demonstrate synchronization accuracy, achieving 
+            less than <strong>5 cm</strong> positional error and under <strong>2°</strong> rotational error.
+          </p>
+          <p>
+            These results highlight SERN's potential to enhance situational awareness and 
+            multi-agent coordination in diverse, contested environments.
+          </p>
+        
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+   <!-- Paper video. -->
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Video</h2>
+    <div class="publication-video">
+      <iframe width="560" height="315"
+              src="https://www.youtube.com/embed/BqNoqDPqhNc"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</div>
+<!--/ Paper video. -->
+
+</section>
+
+  <section class="section" id="sern-implementation">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">SERN Framework</h2>
+    <div class="content">
+      <p>
+        The SERN framework implementation demonstrates bi-directional communication between physical and virtual robots. The system enables synchronized path planning and cross-domain data sharing across separate physical and virtual networks, supporting coordinated multi-robot operations.
+      </p>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <figure class="image">
+          <img src="static/images/SERN ROS Bridge2.png" alt="SERN framework implementation diagram">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Results</h2>
+    <div class="content">
+      <figure class="image">
+        <img src="static/images/comparision_graph1.png" alt="Performance Comparison of SERN ROS Bridge framework vs. Traditional ROS">
+        <figcaption>
+          Performance Comparison of SERN ROS Bridge framework vs. Traditional ROS. We implemented the identical process of increasing the robot numbers by 2, 3 and 5 and recorded the CPU, memory usage, power consumption, and latency overhead of the AuroraXR server (integrated with SERN) and traditional ROS Master. We have chosen the point cloud data generated by each of the robots as data modality to be read and visualized and illustrated the averaged values after 20 iterations of each setup.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{hossain2025sern,
+  author       = {Hossain, Jumman and Dey, Emon and Chugh, Snehalraj and Ahmed, Masud and Anwar, M. S. and Faridee, Abu-Zaher and Hoppes, Jason and Trout, Theron and Basak, Anjon and Chowdhury, Rafidh and Mistry, Rishabh and Kim, Hyun and Freeman, Jade and Suri, Niranjan and Raglin, Adrienne and Busart, Carl and Gregory, Timothy and Ravi, Anuradha and Roy, Nirmalya},
+  title        = {SERN: Simulation-Enhanced Realistic Navigation for Multi-Agent Robotic Systems in Contested Environments},
+  year         = {2025},
+  eprint       = {2410.16686},
+  archivePrefix= {arXiv},
+  primaryClass = {cs.RO},
+  url          = {https://arxiv.org/abs/2410.16686}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+<!--           <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+ -->
+           <p class="" style="font-size: .65rem;">This webpage was adapted from the Nerfies templates, 
+                  which is licensed under a 
+                  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>. 
+                  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+                    <img alt="Creative Commons License" style="border-width:0; height: 0.65rem;" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+                  </a>
+              </p>
+              <p class="" style="font-size: .65rem;">If you use the <a href="https://github.com/pralgomathic/sern.multi-agent">source code</a> of this webpage,
+                please also link back to the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies source code</a> in your footer.</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
